@@ -1,0 +1,26 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: password
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: en_voiture_simone_development
+
+test:
+  <<: *default
+  database: en_voiture_simone_test
+
+production:
+  <<: *default
+  database: en_voiture_simone_production
+  username: en_voiture_simone
+  host: <%= ENV["DB_HOST"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
