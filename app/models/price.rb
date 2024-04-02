@@ -5,7 +5,7 @@ class Price < Struct.new(:time, :value)
   include Comparable
 
   def <=>(other)
-    time <=> other.time
+    time <=> other.time || value <=> other.value
   end
 
   def ==(other)
