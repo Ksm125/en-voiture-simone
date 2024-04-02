@@ -5,7 +5,7 @@ class Potatoes
     return @prices if @prices
 
     data = JSON.parse(json_data)
-    @prices = data.map { |price| Price.new(price['time'], price['value']) }
+    @prices = data.map { |price| Price.new(Time.parse(price['time']), price['value']) }
   end
 
   private

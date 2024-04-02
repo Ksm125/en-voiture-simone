@@ -6,12 +6,7 @@ describe PotatoesService do
   let(:potato) { Potatoes.new }
 
   before do
-    allow(potato).to receive(:prices).and_return([
-                                                   Price.new(Time.parse('2021-01-01 00:00:00'), 100),
-                                                   Price.new(Time.parse('2021-01-02 00:00:00'), 200),
-                                                   Price.new(Time.parse('2021-01-02 01:00:00'), 300),
-                                                   Price.new(Time.parse('2021-01-03 00:00:00'), 300)
-                                                 ])
+    allow_any_instance_of(Potatoes).to receive(:json_data).and_return(File.read(Rails.root.join('spec', 'fixtures', 'potato_prices.json')))
   end
 
   describe '#daily_prices' do
@@ -21,10 +16,11 @@ describe PotatoesService do
       date = Date.parse('2021-01-02')
       prices = service.daily_prices(date)
 
-      expect(prices.size).to eq(2)
+      expect(prices.size).to eq(3)
       expect(prices).to eq([
                              Price.new(Time.parse('2021-01-02 00:00:00'), 200),
-                             Price.new(Time.parse('2021-01-02 01:00:00'), 300)])
+                             Price.new(Time.parse('2021-01-02 01:00:00'), 300),
+                             Price.new(Time.parse('2021-01-02 02:00:00'), 800)])
     end
   end
 end

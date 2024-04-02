@@ -8,6 +8,6 @@ class PotatoesService
 
   # Get the daily prices of the potato for a given date
   def daily_prices(date)
-    @potato.prices.select { |price| price.time.to_date == date.to_date }
+    @potato.prices.select { |price| price.time.to_date == date.to_date }.sort_by(&:time)
   end
 end
