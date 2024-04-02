@@ -1,24 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+This project is provided with a docker configuration to make it easier to run the project.
 
-* Ruby version
+### Prerequisites
 
-* System dependencies
+- Docker
+- Docker Compose
 
-* Configuration
+### Running the project
 
-* Database creation
+To run the project, you can run with docker (Recommended).
 
-* Database initialization
+```sh
+  docker-compose up server
+```
+This will start the server on port 3000.
 
-* How to run the test suite
+#### Endpoints
 
-* Services (job queues, cache servers, search engines, etc.)
+- `GET /api/potatoes/exchange_rate` - Get the exchange rate of potatoes.
+- `GET /api/potatoes/best_gains` - Get the best gains of potatoes.
 
-* Deployment instructions
+### Running the tests
 
-* ...
+To run the tests, you can run with docker (Recommended).
+
+```sh
+  make test
+```
+
+### Troubleshooting
+
+If you have an issue running the project, make sure that you have docker and that the port 3000 and 5432 is not being used by another service.

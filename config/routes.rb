@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :potatoes, only: [] do
-    collection do
-      get :exchange_rate
-      get :best_gains
+  scope :api do
+    resources :potatoes, only: [] do
+      collection do
+        get :exchange_rate
+        get :best_gains
+      end
     end
   end
 end
