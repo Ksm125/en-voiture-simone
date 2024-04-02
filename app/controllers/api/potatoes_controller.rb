@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PotatoesController < ApplicationController
+class Api::PotatoesController < ApplicationController
   def exchange_rate
     render json: PotatoesService.new(potato).daily_prices(date)
   end

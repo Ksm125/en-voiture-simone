@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'Potatoes Endpoint' do
+describe 'Potatoes Api Endpoint' do
   let(:potato) { Potatoes.new }
 
   before do
