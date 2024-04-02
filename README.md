@@ -18,6 +18,15 @@ To run the project, you can run with docker (Recommended).
 ```
 This will start the server on port 3000.
 
+Or if you do not want to use docker, you can run the following commands:
+The project is using Ruby "3.2.2", so make sure you have it installed.
+
+```sh
+  bundle install
+  rails db:create db:migrate db:seed
+  rails s
+```
+
 #### Endpoints
 
 - `GET /api/potatoes/exchange_rate` - Get the exchange rate of potatoes.
@@ -28,7 +37,7 @@ This will start the server on port 3000.
 To run the tests, you can run with docker (Recommended).
 
 ```sh
-  make test
+  bundle exec rspec
 ```
 
 ### Troubleshooting
