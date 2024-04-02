@@ -7,4 +7,8 @@ class Price < Struct.new(:time, :value)
   def <=>(other)
     time <=> other.time
   end
+
+  def ==(other)
+    time == other.time && value == other.value
+  end
 end
