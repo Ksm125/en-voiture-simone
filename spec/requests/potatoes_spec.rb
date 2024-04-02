@@ -32,4 +32,35 @@ describe 'Potatoes Endpoint' do
       end
     end
   end
+
+
+  describe '#potatoes/best_gains' do
+    it 'returns the best gains of the potato for a given date' do
+      get '/potatoes/best_gains', params: { date: '2021-01-02' }
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to eq(
+        {
+          buy: { time: Time.parse('2021-01-02 00:00:00'), value: 200 },
+          sell: { time: Time.parse('2021-01-02 02:00:00'), value: 800 },
+          best_gain: '60000€'
+        }.to_json
+      )
+    end
+
+    it 'returns the best gains of the potato for today' do
+      Timecop.freeze(Time.parse('2021-01-03 12:00:00')) do
+        get '/potatoes/best_gains'
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to eq(
+          {
+            buy: nil,
+            sell: nil,
+            best_gain: '0€'
+          }.to_json
+        )
+      end
+    end
+  end
 end

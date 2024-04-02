@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :potatoes, only: [] do
     collection do
       get :exchange_rate
+      get :best_gains
     end
   end
 end
